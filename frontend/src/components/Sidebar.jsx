@@ -54,9 +54,9 @@ const Sidebar = () => {
       <div className="relative px-6 pt-9 pb-6">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-display font-bold text-lg" style={{ background: 'linear-gradient(135deg, #4F46E5, #3730A3)' }}>
-            T
+            E
           </div>
-          <h1 className="font-display text-2xl font-bold text-white tracking-tight">Traveloop</h1>
+          <h1 className="font-display text-2xl font-bold text-white tracking-tight">Elite Travel</h1>
         </div>
       </div>
 

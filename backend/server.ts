@@ -46,7 +46,7 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 // Routes
 app.get('/', (req, res) => {
-  res.json({ success: true, message: 'TRAVELOOP API is running...' });
+  res.json({ success: true, message: 'Elite Travel API is running...' });
 });
 
 app.use('/api/auth', authRoutes);
