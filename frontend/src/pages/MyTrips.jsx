@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Calendar, Heart, Plus } from 'lucide-react';
 
 const mockTrips = [
-  { id: 1, name: 'Paris Escapade', startDate: '2024-10-15', endDate: '2024-10-22', status: 'Upcoming', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=85' },
-  { id: 2, name: 'Kyoto Retreat', startDate: '2024-04-02', endDate: '2024-04-10', status: 'Completed', image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=85' },
+  { id: 1, name: 'Paris Escapade', startDate: '2026-10-15', endDate: '2026-10-22', status: 'Upcoming', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=85' },
+  { id: 2, name: 'Kyoto Retreat', startDate: '2026-04-02', endDate: '2026-04-10', status: 'Completed', image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=85' },
   { id: 3, name: 'Swiss Alps Winter', startDate: '', endDate: '', status: 'Draft', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=85' },
 ];
 

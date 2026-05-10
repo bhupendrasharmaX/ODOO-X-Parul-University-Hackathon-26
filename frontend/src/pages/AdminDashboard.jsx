@@ -27,9 +27,9 @@ const activityData = [
 const recentTrips = [
   { id: 1, user: 'Alice Johnson', destination: 'Paris, France', startDate: '2026-06-15', status: 'Active', avatar: 'A' },
   { id: 2, user: 'Bob Smith', destination: 'Tokyo, Japan', startDate: '2026-09-10', status: 'Active', avatar: 'B' },
-  { id: 3, user: 'Carol White', destination: 'Bali, Indonesia', startDate: '2025-11-05', status: 'Completed', avatar: 'C' },
+  { id: 3, user: 'Carol White', destination: 'Bali, Indonesia', startDate: '2026-11-05', status: 'Completed', avatar: 'C' },
   { id: 4, user: 'David Lee', destination: 'Interlaken, Switzerland', startDate: '2026-07-01', status: 'Active', avatar: 'D' },
-  { id: 5, user: 'Eve Martinez', destination: 'New York, USA', startDate: '2025-12-20', status: 'Cancelled', avatar: 'E' },
+  { id: 5, user: 'Eve Martinez', destination: 'New York, USA', startDate: '2026-12-20', status: 'Cancelled', avatar: 'E' },
 ];
 
 const statusConfig = {

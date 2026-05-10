@@ -43,81 +43,142 @@ const CreateTrip = () => {
           </div>
 
           <div className="bg-white rounded-[24px] p-10 md:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] border border-surface-100">
-            <div className="mb-10">
-              <h2 className="font-display text-3xl font-bold text-surface-900 mb-2">Trip Fundamentals</h2>
-              <p className="text-surface-500">Define the overarching details for this journey.</p>
-            </div>
-
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Trip Name</label>
-                  <div className="relative">
-                    <Pencil size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-surface-400" />
-                    <input type="text" placeholder="e.g. Summer in" value={form.name} onChange={e => setForm({...form, name: e.target.value})}
-                      className="w-full pl-11 pr-4 py-3.5 bg-white border border-surface-200 rounded-xl text-sm focus:border-primary-500 outline-none" />
-                  </div>
+            {step === 1 && (
+              <>
+                <div className="mb-10">
+                  <h2 className="font-display text-3xl font-bold text-surface-900 mb-2">Trip Fundamentals</h2>
+                  <p className="text-surface-500">Define the overarching details for this journey.</p>
                 </div>
-                <div>
-                  <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Primary Destination</label>
-                  <div className="relative">
-                    <MapPin size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-surface-400" />
-                    <input type="text" placeholder="Country or Region" value={form.destination} onChange={e => setForm({...form, destination: e.target.value})}
-                      className="w-full pl-11 pr-4 py-3.5 bg-white border border-surface-200 rounded-xl text-sm focus:border-primary-500 outline-none" />
-                  </div>
-                </div>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Start Date</label>
-                  <div className="relative">
-                    <Calendar size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-surface-400 pointer-events-none" />
-                    <input type="date" value={form.startDate} onChange={e => setForm({...form, startDate: e.target.value})}
-                      className="w-full pl-11 pr-4 py-3.5 bg-white border border-surface-200 rounded-xl text-sm text-surface-500 focus:border-primary-500 outline-none" />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">End Date</label>
-                  <div className="relative">
-                    <Calendar size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-surface-400 pointer-events-none" />
-                    <input type="date" value={form.endDate} onChange={e => setForm({...form, endDate: e.target.value})}
-                      className="w-full pl-11 pr-4 py-3.5 bg-white border border-surface-200 rounded-xl text-sm text-surface-500 focus:border-primary-500 outline-none" />
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Vibe / Description</label>
-                <textarea rows={3} placeholder="Describe the mood of the trip... (e.g., Relaxing wine tasting and cultural exploration)"
-                  value={form.description} onChange={e => setForm({...form, description: e.target.value})}
-                  className="w-full p-4 bg-white border border-surface-200 rounded-xl text-sm focus:border-primary-500 outline-none resize-none" />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Cover Photo</label>
-                <div onClick={() => fileRef.current?.click()}
-                  className="w-full h-32 rounded-2xl border-2 border-dashed border-[#c7d2fe] bg-[#eef2ff]/50 flex flex-col items-center justify-center cursor-pointer hover:bg-[#eef2ff] transition-colors relative overflow-hidden">
-                  {form.coverImage ? (
-                    <img src={form.coverImage} alt="Cover" className="absolute inset-0 w-full h-full object-cover" />
-                  ) : (
-                    <>
-                      <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#4f46e5] mb-2">
-                        <UploadCloud size={20} />
+                <div className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                      <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Trip Name</label>
+                      <div className="relative">
+                        <Pencil size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-surface-400" />
+                        <input type="text" placeholder="e.g. Summer in" value={form.name} onChange={e => setForm({...form, name: e.target.value})}
+                          className="w-full pl-11 pr-4 py-3.5 bg-white border border-surface-200 rounded-xl text-sm focus:border-primary-500 outline-none" />
                       </div>
-                      <p className="text-sm font-bold text-surface-900">Click to upload or drag and drop</p>
-                      <p className="text-xs text-surface-500 mt-1">SVG, PNG, JPG or GIF (max. 800x400px)</p>
-                    </>
-                  )}
-                  <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleFile} />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Primary Destination</label>
+                      <div className="relative">
+                        <MapPin size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-surface-400" />
+                        <input type="text" placeholder="Country or Region" value={form.destination} onChange={e => setForm({...form, destination: e.target.value})}
+                          className="w-full pl-11 pr-4 py-3.5 bg-white border border-surface-200 rounded-xl text-sm focus:border-primary-500 outline-none" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                      <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Start Date</label>
+                      <div className="relative">
+                        <Calendar size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-surface-400 pointer-events-none" />
+                        <input type="date" value={form.startDate} onChange={e => setForm({...form, startDate: e.target.value})}
+                          className="w-full pl-11 pr-4 py-3.5 bg-white border border-surface-200 rounded-xl text-sm text-surface-500 focus:border-primary-500 outline-none" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">End Date</label>
+                      <div className="relative">
+                        <Calendar size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-surface-400 pointer-events-none" />
+                        <input type="date" value={form.endDate} onChange={e => setForm({...form, endDate: e.target.value})}
+                          className="w-full pl-11 pr-4 py-3.5 bg-white border border-surface-200 rounded-xl text-sm text-surface-500 focus:border-primary-500 outline-none" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Vibe / Description</label>
+                    <textarea rows={3} placeholder="Describe the mood of the trip... (e.g., Relaxing wine tasting and cultural exploration)"
+                      value={form.description} onChange={e => setForm({...form, description: e.target.value})}
+                      className="w-full p-4 bg-white border border-surface-200 rounded-xl text-sm focus:border-primary-500 outline-none resize-none" />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Cover Photo</label>
+                    <div onClick={() => fileRef.current?.click()}
+                      className="w-full h-32 rounded-2xl border-2 border-dashed border-[#c7d2fe] bg-[#eef2ff]/50 flex flex-col items-center justify-center cursor-pointer hover:bg-[#eef2ff] transition-colors relative overflow-hidden">
+                      {form.coverImage ? (
+                        <img src={form.coverImage} alt="Cover" className="absolute inset-0 w-full h-full object-cover" />
+                      ) : (
+                        <>
+                          <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#4f46e5] mb-2">
+                            <UploadCloud size={20} />
+                          </div>
+                          <p className="text-sm font-bold text-surface-900">Click to upload or drag and drop</p>
+                          <p className="text-xs text-surface-500 mt-1">SVG, PNG, JPG or GIF (max. 800x400px)</p>
+                        </>
+                      )}
+                      <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleFile} />
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {step === 2 && (
+              <div className="space-y-6">
+                <div className="mb-10">
+                  <h2 className="font-display text-3xl font-bold text-surface-900 mb-2">Cities & Stops</h2>
+                  <p className="text-surface-500">Plan the major stops for your trip.</p>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Stop 1</label>
+                  <input type="text" placeholder="e.g. Paris" className="w-full p-3.5 bg-white border border-surface-200 rounded-xl text-sm focus:border-primary-500 outline-none" />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Stop 2</label>
+                  <input type="text" placeholder="e.g. Lyon" className="w-full p-3.5 bg-white border border-surface-200 rounded-xl text-sm focus:border-primary-500 outline-none" />
                 </div>
               </div>
+            )}
 
-              <div className="pt-4 border-t border-surface-100 flex justify-end">
-                <button className="px-8 py-3.5 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-bold text-sm rounded-xl transition-colors shadow-sm">
+            {step === 3 && (
+              <div className="space-y-6">
+                <div className="mb-10">
+                  <h2 className="font-display text-3xl font-bold text-surface-900 mb-2">Budget Planning</h2>
+                  <p className="text-surface-500">Calculate your estimated budget based on the duration of your trip.</p>
+                </div>
+                
+                <div>
+                  <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Daily Budget per Person ($)</label>
+                  <input type="number" placeholder="0" value={form.dailyBudget || ''} onChange={e => {
+                    const daily = Number(e.target.value);
+                    const duration = form.startDate && form.endDate ? Math.max(1, Math.round((new Date(form.endDate) - new Date(form.startDate)) / 86400000)) : 0;
+                    setForm({...form, dailyBudget: daily, totalBudget: daily * duration});
+                  }}
+                  className="w-full p-3.5 bg-white border border-surface-200 rounded-xl text-sm focus:border-primary-500 outline-none" />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-surface-900 mb-2 tracking-wide uppercase">Total Estimated Budget ($)</label>
+                  <div className="w-full p-4 bg-surface-50 border border-surface-200 rounded-xl text-xl font-bold text-surface-900">
+                    ${(form.totalBudget || 0).toLocaleString()}
+                  </div>
+                  <p className="text-xs text-surface-400 mt-2">
+                    Calculation: ${form.dailyBudget || 0} / day &times; {form.startDate && form.endDate ? Math.max(1, Math.round((new Date(form.endDate) - new Date(form.startDate)) / 86400000)) : 0} days
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <div className="pt-8 mt-8 border-t border-surface-100 flex justify-between">
+              {step > 1 ? (
+                <button onClick={() => setStep(s => s - 1)} className="px-8 py-3.5 bg-white border border-surface-200 hover:bg-surface-50 text-surface-700 font-bold text-sm rounded-xl transition-colors shadow-sm">
+                  ← Previous
+                </button>
+              ) : <div></div>}
+              {step < 3 ? (
+                <button onClick={() => setStep(s => s + 1)} className="px-8 py-3.5 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-bold text-sm rounded-xl transition-colors shadow-sm">
                   Next Step →
                 </button>
-              </div>
+              ) : (
+                <button onClick={() => alert('Trip created successfully!')} className="px-8 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm rounded-xl transition-colors shadow-sm">
+                  Create Trip ✓
+                </button>
+              )}
             </div>
           </div>
         </div>
